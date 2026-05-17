@@ -6,6 +6,7 @@
     <title>William Prestigiovanni | Portfolio</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.8em' font-size='80' fill='%23ff003c' font-family='monospace' font-weight='bold'>&gt;_</text></svg>">
     <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/script.js" defer></script>
 </head>
 <body>
 
@@ -28,19 +29,19 @@
     </header>
 
     <main>
-        <section class="hero-section" id="about" style="border-bottom: none;">
+        <section class="hero-section" id="hero">
             <div class="status-bar">
                 <span class="status-blink"></span>
-                <span data-it="ROMA, ITALIA" data-en="ROME, ITALY">ROMA</span>
+                <span data-it="ROMA, ITALIA" data-en="ROME, ITALY">ROMA, ITALIA</span>
             </div>
             
-            <h1 class="glitch-text" data-text="WILLIAM PRESTIGIOVANNI">WILLIAM PRESTIGIOVANNI</h1>
+            <h1 class="glitch-text" data-it="WILLIAM PRESTIGIOVANNI" data-en="WILLIAM PRESTIGIOVANNI" data-text="WILLIAM PRESTIGIOVANNI">WILLIAM PRESTIGIOVANNI</h1>
             <div class="typewriter-sub" id="typewriter"></div>
 
             <div class="social-links">
-                <a href="https://www.linkedin.com/in/08b63b298/" target="_blank" class="cyber-btn" data-it="LINKEDIN" data-en="LINKEDIN" data-link-it="https://www.linkedin.com/in/08b63b298/" data-link-en="https://www.linkedin.com/in/08b63b298/?locale=en-US">LINKEDIN</a>
-                <a href="https://github.com/0xPR3ST1JH0NN7/" target="_blank" class="cyber-btn" data-it="GITHUB" data-en="GITHUB ">GITHUB</a>
-                <a href="https://app.hackthebox.com/users/1541775" target="_blank" class="cyber-btn" data-it="HACK THE BOX" data-en="HACK THE BOX">HACKTHEBOX</a>
+                <a href="https://www.linkedin.com/in/08b63b298/" target="_blank" rel="noopener noreferrer" class="cyber-btn" data-it="LINKEDIN" data-en="LINKEDIN" data-link-it="https://www.linkedin.com/in/08b63b298/" data-link-en="https://www.linkedin.com/in/08b63b298/?locale=en_US">LINKEDIN</a>
+                <a href="https://github.com/0xPR3ST1JH0NN7/" target="_blank" rel="noopener noreferrer" class="cyber-btn" data-it="GITHUB" data-en="GITHUB">GITHUB</a>
+                <a href="https://app.hackthebox.com/users/1541775" target="_blank" rel="noopener noreferrer" class="cyber-btn" data-it="HACK THE BOX" data-en="HACK THE BOX">HACKTHEBOX</a>
             </div>
 
             <div class="terminal-container">
@@ -75,71 +76,73 @@
                     </div>
                 </div>
             </div>
-        <h1 class="glitch-text" data-it="Certificazioni" data-en="Certifications">Certificazioni</h2>
-    
-    <div class="cert-grid">
-        <!-- Badge OSCP -->
-        <div class="cert-card">
-            <a href="LINK_VERIFICA_OSCP" target="_blank" rel="noopener noreferrer">
-                <img src="/assets/img/oscp.png" alt="OSCP Certification">
-            </a>
-        </div>
-        <!-- Badge OSCP+ -->
-        <div class="cert-card">
-            <a href="LINK_VERIFICA_OSCP" target="_blank" rel="noopener noreferrer">
-                <img src="/assets/img/oscp_plus.png" alt="OSCP+ Certification">
-            </a>
-        </div>
-        <!-- Badge CPTS -->
-        <div class="cert-card">
-            <a href="LINK_VERIFICA_CPTS" target="_blank" rel="noopener noreferrer">
-                <img src="/assets/img/CPTS.webp" alt="HTB CPTS Certification">
-            </a>
-        </div>
+        </section>
 
-        <!-- Badge CWPE -->
-        <div class="cert-card">
-            <a href="LINK_VERIFICA_CWPE" target="_blank" rel="noopener noreferrer">
-                <img src="/assets/img/CWPE.webp" alt="CWPE Certification">
-            </a>
-        </div>
-    </div>
-    <h1 class="glitch-text" 
-        data-it="PERCORSO ACCADEMICO" 
-        data-en="ACADEMIC TIMELINE" 
-        data-text="PERCORSO ACCADEMICO">
-        PERCORSO ACCADEMICO
-    </h1>
+        <section id="certificazioni" class="cert-section">
+            <h2 class="glitch-text" data-it="CERTIFICAZIONI" data-en="CERTIFICATIONS" data-text="CERTIFICAZIONI">CERTIFICAZIONI</h2>
+            
+            <div class="cert-grid">
+                <div class="cert-card">
+                    <a href="#" target="_blank" rel="noopener noreferrer">
+                        <img src="/assets/img/oscp.png" alt="OSCP Certification">
+                    </a>
+                </div>
+                <div class="cert-card">
+                    <a href="#" target="_blank" rel="noopener noreferrer">
+                        <img src="/assets/img/oscp_plus.png" alt="OSCP+ Certification">
+                    </a>
+                </div>
+                <div class="cert-card">
+                    <a href="#" target="_blank" rel="noopener noreferrer">
+                        <img src="/assets/img/CPTS.webp" alt="HTB CPTS Certification">
+                    </a>
+                </div>
+                <div class="cert-card">
+                    <a href="#" target="_blank" rel="noopener noreferrer">
+                        <img src="/assets/img/CWPE.webp" alt="CWPE Certification">
+                    </a>
+                </div>
+            </div>
+        </section>
 
-    <div class="edu-timeline">
-        <!-- Università Magistrale -->
-        <div class="edu-card active-studying">
-            <div class="edu-header">
-                <span class="edu-date">2024 — 2026</span>
-                <h2 data-it="Laurea Magistrale in Cybersecurity" data-en="Master's Degree in Cybersecurity">Laurea Magistrale in Cybersecurity</h2>
+        <section id="formazione" class="edu-section">
+            <h2 class="glitch-text" data-it="PERCORSO ACCADEMICO" data-en="ACADEMIC TIMELINE" data-text="PERCORSO ACCADEMICO">PERCORSO ACCADEMICO</h2>
+            
+            <div class="edu-timeline">
+                <div class="edu-card active-studying">
+                    <div class="edu-header">
+                        <span class="edu-date">2024 — 2026</span>
+                        <h3 data-it="Laurea Magistrale in Cybersecurity" data-en="Master's Degree in Cybersecurity">Laurea Magistrale in Cybersecurity</h3>
+                    </div>
+                    <p class="edu-institution">Università degli Studi di Roma</p>
+                    <p class="edu-details" 
+                       data-it="Focalizzazione su offensive security, crittografia applicata e analisi dei protocolli di rete. Tesi sperimentale incentrata sulla progettazione e sviluppo di un'infrastruttura di Command and Control (Server C2) unita alla generazione di shellcode mediante modelli di intelligenza artificiale per l'evasione di sistemi difensivi. Completamento previsto Ottobre 2026." 
+                       data-en="Focus on offensive security, applied cryptography, and network protocol analysis. Experimental thesis focused on designing and developing a Command and Control (C2 Server) framework combined with AI-driven shellcode generation to bypass defensive mechanisms. Expected completion October 2026.">
+                       Focalizzazione su offensive security, crittografia applicata e analisi dei protocolli di rete. Tesi sperimentale incentrata sulla progettazione e sviluppo di un'infrastruttura di Command and Control (Server C2) unita alla generazione di shellcode mediante modelli di intelligenza artificiale per l'evasione di sistemi difensivi. Completamento previsto Ottobre 2026.
+                    </p>
+                </div>
+
+                <div class="edu-card">
+                    <div class="edu-header">
+                        <span class="edu-date">2021 — 2024</span>
+                        <h3 data-it="Laurea Triennale" data-en="Bachelor's Degree">Laurea Triennale</h3>
+                    </div>
+                    <p class="edu-institution">Università degli Studi di Roma</p>
+                    <p class="edu-details" 
+                       data-it="Percorso focalizzato sulle fondamenta dell'informatica, programmazione software, architetture dei sistemi operativi e basi di reti di calcolatori. Votazione finale 100/110." 
+                       data-en="Core curriculum focused on computer science fundamentals, software engineering, operating systems architecture, and computer networking. Final grade 100/110.">
+                       Percorso focalizzato sulle fondamenta dell'informatica, programmazione software, architetture dei sistemi operativi e basi di reti di calcolatori. Votazione finale 100/110.
+                    </p>
+                </div>
             </div>
-            <p class="edu-institution">Università degli Studi di Roma</p>
-    
-        </div>
-        <br>
-        <!-- Università Triennale -->
-        <div class="edu-card">
-            <div class="edu-header">
-                <span class="edu-date">2021 — 2024</span>
-                <h2 data-it="Laurea Triennale" data-en="Bachelor's Degree">Laurea Triennale</h2>
-            </div>
-            <p class="edu-institution">Università degli Studi di Roma</p>
-        </div>
-    </div>
         </section>
     </main>
 
     <footer>
-        <div class="footer-content">
-            <div data-it="&copy; 2026 WILLIAM PRESTIGIOVANNI. TUTTI I DIRITTI RISERVATI." data-en="&copy; 2026 WILLIAM PRESTIGIOVANNI. ALL RIGHTS RESERVED.">&copy; 2026 WILLIAM PRESTIGIOVANNI. TUTTI I DIRITTI RISERVATI.</div>
-        </div>
-    </footer>
+    <div class="footer-container">
+        <p data-it="&copy; 2026 William Prestigiovanni. Tutti i diritti riservati." data-en="&copy; 2026 William Prestigiovanni. All rights reserved.">&copy; 2026 William Prestigiovanni. Tutti i diritti riservati.</p>
+    </div>
+</footer>
 
-    <script src="/js/script.js"></script>
 </body>
-</html> 
+</html>

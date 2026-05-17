@@ -1,3 +1,6 @@
+/* =========================================
+   1. VARIABILI E IMPOSTAZIONI GLOBALI
+========================================= */
 :root {
     --bg-color: #050505;
     --surface-color: #0d0d11;
@@ -16,14 +19,11 @@
     cursor: cell;
 }
 
-body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    font-family: var(--font-mono);
-    overflow-x: hidden;
-    line-height: 1.6;
-}
 
+
+/* =========================================
+   2. EFFETTI BACKGROUND
+========================================= */
 canvas {
     position: fixed;
     top: 0;
@@ -45,6 +45,31 @@ canvas {
         linear-gradient(to bottom, rgba(255, 0, 60, 0.02) 1px, transparent 1px);
     background-size: 40px 40px;
     z-index: -1;
+}
+
+/* =========================================
+   3. LAYOUT PRINCIPALE E HEADER
+========================================= */
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-mono);
+    overflow-x: hidden;
+    line-height: 1.6;
+    /* Trasforma il body in un contenitore verticale che occupa l'intera altezza del browser */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    /* Permette al blocco main di espandersi e occupare tutto lo spazio vuoto disponibile */
+    flex: 1;
+    width: 100%;
 }
 
 header {
@@ -130,159 +155,24 @@ header {
     text-shadow: 0 0 8px var(--primary-glow);
 }
 
-main {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 20px;
-}
 
-.hero-section {
-    padding: 60px 0;
-    border-bottom: 1px dashed var(--border-color);
-    margin-bottom: 40px;
-}
-
-.status-bar {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: rgba(255, 0, 60, 0.05);
-    border: 1px solid var(--border-color);
-    padding: 6px 15px;
-    border-radius: 4px;
-    margin-bottom: 25px;
-    font-size: 0.85rem;
-    color: var(--primary-color);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.status-blink {
-    width: 8px;
-    height: 8px;
-    background-color: var(--primary-color);
-    border-radius: 50%;
-    animation: blink 1.2s infinite;
-    box-shadow: 0 0 8px var(--primary-color);
-}
-
-@keyframes blink {
-    0%, 100% { opacity: 0.2; }
-    50% { opacity: 1; }
-}
-
-h1 {
-    font-size: 3rem;
+/* =========================================
+   4. COMPONENTI COMUNI (Bottoni, Titoli)
+========================================= */
+h1, h2 {
     font-weight: 800;
     letter-spacing: -1px;
     margin-bottom: 15px;
     text-transform: uppercase;
 }
 
-.glitch-text {
-    position: relative;
-    color: var(--text-color);
+h1 {
+    font-size: 3rem;
 }
 
-.glitch-text::before {
-    content: attr(data-text);
-    position: absolute;
-    left: -2px;
-    text-shadow: 1px 0 blue;
-    top: 0;
-    color: var(--text-color);
-    background: var(--bg-color);
-    overflow: hidden;
-    clip: rect(0, 900px, 0, 0);
-    animation: noise-1 10s infinite linear alternate-reverse;
-}
-
-.glitch-text::after {
-    content: attr(data-text);
-    position: absolute;
-    left: 2px;
-    text-shadow: -1px 0 red;
-    top: 0;
-    color: var(--text-color);
-    background: var(--bg-color);
-    overflow: hidden;
-    clip: rect(0, 900px, 0, 0);
-    animation: noise-2 10s infinite linear alternate-reverse;
-}
-
-
-@keyframes noise-1 {
-    0% { clip: rect(20px, 9999px, 66px, 0); }
-    5% { clip: rect(80px, 9999px, 5px, 0); }
-    10% { clip: rect(31px, 9999px, 94px, 0); }
-    15% { clip: rect(6px, 9999px, 39px, 0); }
-    20% { clip: rect(92px, 9999px, 61px, 0); }
-    25% { clip: rect(44px, 9999px, 12px, 0); }
-    30% { clip: rect(76px, 9999px, 88px, 0); }
-    35% { clip: rect(18px, 9999px, 45px, 0); }
-    40% { clip: rect(53px, 9999px, 71px, 0); }
-    45% { clip: rect(3px, 9999px, 29px, 0); }
-    50% { clip: rect(82px, 9999px, 99px, 0); }
-    55% { clip: rect(15px, 9999px, 51px, 0); }
-    60% { clip: rect(67px, 9999px, 18px, 0); }
-    65% { clip: rect(38px, 9999px, 83px, 0); }
-    70% { clip: rect(91px, 9999px, 33px, 0); }
-    75% { clip: rect(24px, 9999px, 74px, 0); }
-    80% { clip: rect(58px, 9999px, 10px, 0); }
-    85% { clip: rect(7px, 9999px, 62px, 0); }
-    90% { clip: rect(79px, 9999px, 47px, 0); }
-    95% { clip: rect(41px, 9999px, 89px, 0); }
-    100% { clip: rect(12px, 9999px, 55px, 0); }
-}
-
-@keyframes noise-2 {
-    0% { clip: rect(40px, 9999px, 15px, 0); }
-    5% { clip: rect(12px, 9999px, 85px, 0); }
-    10% { clip: rect(63px, 9999px, 38px, 0); }
-    15% { clip: rect(89px, 9999px, 71px, 0); }
-    20% { clip: rect(5px, 9999px, 22px, 0); }
-    25% { clip: rect(78px, 9999px, 94px, 0); }
-    30% { clip: rect(19px, 9999px, 53px, 0); }
-    35% { clip: rect(56px, 9999px, 10px, 0); }
-    40% { clip: rect(33px, 9999px, 82px, 0); }
-    45% { clip: rect(91px, 9999px, 46px, 0); }
-    50% { clip: rect(27px, 9999px, 68px, 0); }
-    55% { clip: rect(74px, 9999px, 3px, 0); }
-    60% { clip: rect(11px, 9999px, 59px, 0); }
-    65% { clip: rect(83px, 9999px, 24px, 0); }
-    70% { clip: rect(49px, 9999px, 91px, 0); }
-    75% { clip: rect(3px, 9999px, 37px, 0); }
-    80% { clip: rect(62px, 9999px, 78px, 0); }
-    85% { clip: rect(21px, 9999px, 13px, 0); }
-    90% { clip: rect(95px, 9999px, 50px, 0); }
-    95% { clip: rect(36px, 9999px, 87px, 0); }
-    100% { clip: rect(70px, 9999px, 32px, 0); }
-}
-
-.typewriter-sub {
-    font-size: 1.2rem;
-    color: var(--text-muted);
+h2 {
+    font-size: 2rem;
     margin-bottom: 30px;
-    display: flex;
-    align-items: center;
-}
-
-.typewriter-sub::after {
-    content: '︳';
-    color: var(--primary-color);
-    animation: cursor-blink 0.8s infinite;
-}
-
-@keyframes cursor-blink {
-    0%, 100% { opacity: 0; }
-    50% { opacity: 1; }
-}
-
-.social-links {
-    display: flex;
-    gap: 20px;
-    margin-bottom: 40px;
-    flex-wrap: wrap;
 }
 
 .cyber-btn {
@@ -322,6 +212,59 @@ h1 {
     box-shadow: 0 0 15px rgba(255, 0, 60, 0.15);
 }
 
+.status-bar {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 0, 60, 0.05);
+    border: 1px solid var(--border-color);
+    padding: 6px 15px;
+    border-radius: 4px;
+    margin-bottom: 25px;
+    font-size: 0.85rem;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.status-blink {
+    width: 8px;
+    height: 8px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    animation: blink 1.2s infinite;
+    box-shadow: 0 0 8px var(--primary-color);
+}
+
+/* =========================================
+   5. SEZIONI SPECIFICHE (Hero, Terminale)
+========================================= */
+.hero-section {
+    padding: 40px 0 40px 0;
+    border-bottom: 1px dashed var(--border-color);
+}
+
+.typewriter-sub {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.typewriter-sub::after {
+    content: '︳';
+    color: var(--primary-color);
+    animation: cursor-blink 0.8s infinite;
+}
+
+.social-links {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
 .terminal-container {
     background-color: var(--surface-color);
     border: 1px solid var(--border-color);
@@ -352,7 +295,10 @@ h1 {
     background-color: #2e2e38;
 }
 
-.t-btn.close { background-color: #ff003c; box-shadow: 0 0 6px #ff003c; }
+.t-btn.close { 
+    background-color: #ff003c; 
+    box-shadow: 0 0 6px #ff003c; 
+}
 
 .terminal-title {
     color: var(--text-muted);
@@ -406,49 +352,26 @@ h1 {
     margin-bottom: 20px;
 }
 
-footer {
-    border-top: 1px solid var(--border-color);
-    background: #09090d;
-    padding: 30px 20px;
-    text-align: center;
-    font-size: 0.8rem;
-    color: var(--text-muted);
+/* =========================================
+   6. SEZIONE CERTIFICAZIONI
+========================================= */
+.cert-section {
+    padding: 40px 0;
+    margin-bottom: 40px;
+    border-bottom: 1px dashed var(--border-color);
 }
 
-.footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: fit-content;
-}
-
-@media (max-width: 768px) {
-    .nav-container, .footer-content {
-        flex-direction: column;
-        gap: 15px;
-    }
-    h1 { font-size: 2.2rem; }
-    .social-links { flex-direction: column; }
-    .cyber-btn { text-align: center; }
-}
-
-
-/* Griglia che imposta massimo 4 colonne */
 .cert-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 40px; /* Spazio abbondante tra i badge per farli respirare */
-    margin-top: 40px;
-    margin-bottom: 40px;
+    gap: 40px;
+    margin-top: 30px;
 }
 
-/* Stile della singola card ciotta */
 .cert-card {
     background-color: #111;
     border: 2px solid #333;
-    border-radius: 15px; /* Angoli arrotondati per un look più massiccio */
+    border-radius: 15px;
     padding: 20px;
     display: flex;
     justify-content: center;
@@ -456,7 +379,6 @@ footer {
     transition: all 0.3s ease;
 }
 
-/* Assicura che l'immagine occupi tutto lo spazio disponibile senza sgranare */
 .cert-card img {
     width: 100%;
     max-width: 200px;
@@ -465,23 +387,221 @@ footer {
     filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.1));
 }
 
-/* Effetto hacker al passaggio del mouse */
 .cert-card:hover {
-    border-color: #0f0; /* Bordo verde fosforo */
-    transform: translateY(-10px); /* Il badge si solleva */
-    box-shadow: 0 10px 20px rgba(0, 255, 0, 0.15); /* Bagliore verde sottostante */
+    border-color: #0f0;
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 255, 0, 0.15);
 }
 
-/* Regole per la responsività sugli schermi più piccoli */
+/* =========================================
+   7. SEZIONE FORMAZIONE E TIMELINE
+========================================= */
+.edu-section {
+    padding: 40px 0;
+    margin-bottom: 20px;
+}
+
+.edu-timeline {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    max-width: 900px;
+}
+
+.edu-card {
+    background-color: #111;
+    border: 2px solid #222;
+    border-radius: 10px;
+    padding: 25px;
+    position: relative;
+    transition: border-color 0.3s ease;
+}
+
+.edu-card.active-studying {
+    border-color: #333;
+    box-shadow: inset 0 0 10px rgba(0, 255, 0, 0.02);
+}
+
+.edu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #222;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.edu-date {
+    font-family: monospace;
+    color: #888;
+    font-size: 0.9em;
+}
+
+.edu-card h3 {
+    color: var(--text-color);
+    margin: 0;
+    font-size: 1.3em;
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+.edu-institution {
+    color: #0f0;
+    font-family: monospace;
+    margin: 0 0 10px 0;
+    font-size: 1em;
+}
+
+.edu-details {
+    color: #aaa;
+    line-height: 1.6;
+    margin: 0;
+    font-size: 0.95em;
+}
+
+.edu-card:hover {
+    border-color: #444;
+}
+
+/* =========================================
+   8. FOOTER
+========================================= */
+
+
+footer {
+    border-top: 1px solid var(--border-color);
+    background: #09090d;
+    padding: 30px 20px;
+    font-size: 0.8rem;
+    /* Centra il testo all'interno del footer */
+    text-align: center;
+}
+
+.footer-container, .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.footer-left p {
+    color: var(--text-muted);
+}
+
+.mr-robot-quote {
+    font-family: var(--font-mono);
+    color: #555;
+    font-size: 0.9em;
+    transition: color 0.3s;
+}
+
+.mr-robot-quote:hover {
+    color: #0f0;
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+}
+
+/* =========================================
+   9. ANIMAZIONI (Glitch e cursore)
+========================================= */
+@keyframes blink {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 1; }
+}
+
+@keyframes cursor-blink {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+.glitch-text {
+    position: relative;
+    color: var(--text-color);
+}
+
+.glitch-text::before, .glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    color: var(--text-color);
+    background: var(--bg-color);
+    overflow: hidden;
+    clip: rect(0, 900px, 0, 0);
+}
+
+.glitch-text::before {
+    left: -2px;
+    text-shadow: 1px 0 blue;
+    animation: noise-1 10s infinite linear alternate-reverse;
+}
+
+.glitch-text::after {
+    left: 2px;
+    text-shadow: -1px 0 red;
+    animation: noise-2 10s infinite linear alternate-reverse;
+}
+
+@keyframes noise-1 {
+    0% { clip: rect(20px, 9999px, 66px, 0); }
+    10% { clip: rect(31px, 9999px, 94px, 0); }
+    20% { clip: rect(92px, 9999px, 61px, 0); }
+    30% { clip: rect(76px, 9999px, 88px, 0); }
+    40% { clip: rect(53px, 9999px, 71px, 0); }
+    50% { clip: rect(82px, 9999px, 99px, 0); }
+    60% { clip: rect(67px, 9999px, 18px, 0); }
+    70% { clip: rect(91px, 9999px, 33px, 0); }
+    80% { clip: rect(58px, 9999px, 10px, 0); }
+    90% { clip: rect(79px, 9999px, 47px, 0); }
+    100% { clip: rect(12px, 9999px, 55px, 0); }
+}
+
+@keyframes noise-2 {
+    0% { clip: rect(40px, 9999px, 15px, 0); }
+    10% { clip: rect(63px, 9999px, 38px, 0); }
+    20% { clip: rect(5px, 9999px, 22px, 0); }
+    30% { clip: rect(19px, 9999px, 53px, 0); }
+    40% { clip: rect(33px, 9999px, 82px, 0); }
+    50% { clip: rect(27px, 9999px, 68px, 0); }
+    60% { clip: rect(11px, 9999px, 59px, 0); }
+    70% { clip: rect(49px, 9999px, 91px, 0); }
+    80% { clip: rect(62px, 9999px, 78px, 0); }
+    90% { clip: rect(95px, 9999px, 50px, 0); }
+    100% { clip: rect(70px, 9999px, 32px, 0); }
+}
+
+/* =========================================
+   10. MEDIA QUERIES E RESPONSIVE
+========================================= */
 @media (max-width: 992px) {
     .cert-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 badge per riga sui tablet */
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-container, .footer-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.6rem; }
+    
+    .social-links { flex-direction: column; }
+    .cyber-btn { text-align: center; }
+    
+    .edu-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
     }
 }
 
 @media (max-width: 576px) {
     .cert-grid {
-        grid-template-columns: 1fr; /* 1 badge per riga sugli smartphone */
+        grid-template-columns: 1fr;
         gap: 20px;
     }
 }

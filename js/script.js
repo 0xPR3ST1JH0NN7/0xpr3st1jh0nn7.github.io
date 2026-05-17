@@ -1,4 +1,6 @@
-// Gestione multilingua
+/* ========================================================
+   GESTIONE LINGUA E TRADUZIONI
+======================================================== */
 const phrasesIT = ['PENETRATION TESTER', 'RED TEAM OPERATOR'];
 const phrasesEN = ['PENETRATION TESTER', 'RED TEAM OPERATOR'];
 let currentPhrases = phrasesIT;
@@ -6,39 +8,40 @@ let currentPhrases = phrasesIT;
 function setLang(lang) {
     localStorage.setItem('portfolio_lang', lang);
     
-    // Aggiorna tutti gli elementi testuali, i link e il glitch
     document.querySelectorAll('[data-it]').forEach(el => {
         const translatedText = el.getAttribute('data-' + lang);
         
         // Aggiorna il testo visibile
         el.innerHTML = translatedText;
         
-        // Se l'elemento usa l'effetto glitch, aggiorna anche il data-text
+        // Sincronizza l'attributo data-text per l'effetto CSS Glitch
         if (el.classList.contains('glitch-text') || el.hasAttribute('data-text')) {
             el.setAttribute('data-text', translatedText);
         }
         
-        // Verifica se l'elemento ha un link specifico per la lingua e lo aggiorna
+        // Aggiorna i collegamenti href per link specifici per lingua
         if (el.hasAttribute('data-link-' + lang)) {
             el.href = el.getAttribute('data-link-' + lang);
         }
     });
     
-    // Aggiorna lo stato visivo dei pulsanti lingua
+    // Aggiorna interfaccia bottoni lingua
     document.getElementById('lang-it').classList.toggle('active', lang === 'it');
     document.getElementById('lang-en').classList.toggle('active', lang === 'en');
     
-    // Aggiorna la macchina da scrivere
+    // Aggiorna la variabile per l'effetto macchina da scrivere
     currentPhrases = lang === 'it' ? phrasesIT : phrasesEN;
 }
 
-// Inizializza la lingua al caricamento
+// Inizializza al caricamento
 window.addEventListener('DOMContentLoaded', () => {
-    const savedLang = localStorage.getItem('portfolio_lang') || 'en';
+    const savedLang = localStorage.getItem('portfolio_lang') || 'it';
     setLang(savedLang);
 });
 
-// Sfondo a matrice
+/* ========================================================
+   EFFETTO MATRIX CANVAS SULLO SFONDO
+======================================================== */
 const canvas = document.getElementById('matrixCanvas');
 const ctx = canvas.getContext('2d');
 
@@ -84,16 +87,20 @@ function drawMatrix() {
 }
 setInterval(drawMatrix, 33);
 
-// Effetto macchina da scrivere
-let charIndex = 0;
+/* ========================================================
+   EFFETTO MACCHINA DA SCRIVERE (TYPEWRITER)
+======================================================== */
 let phraseIndex = 0;
 let typingTimer;
 
 function typingEffect() {
+    let typewriterElement = document.getElementById('typewriter');
+    if(!typewriterElement) return;
+
     let currentWord = currentPhrases[phraseIndex].split("");
     var loopTyping = function() {
         if (currentWord.length > 0) {
-            document.getElementById('typewriter').innerHTML += currentWord.shift();
+            typewriterElement.innerHTML += currentWord.shift();
             typingTimer = setTimeout(loopTyping, 80);
         } else {
             setTimeout(deletingEffect, 2000);
@@ -103,11 +110,14 @@ function typingEffect() {
 }
 
 function deletingEffect() {
-    let currentWord = document.getElementById('typewriter').innerHTML.split("");
+    let typewriterElement = document.getElementById('typewriter');
+    if(!typewriterElement) return;
+
+    let currentWord = typewriterElement.innerHTML.split("");
     var loopDeleting = function() {
         if (currentWord.length > 0) {
             currentWord.pop();
-            document.getElementById('typewriter').innerHTML = currentWord.join("");
+            typewriterElement.innerHTML = currentWord.join("");
             typingTimer = setTimeout(loopDeleting, 40);
         } else {
             phraseIndex = (phraseIndex + 1) % currentPhrases.length;
@@ -118,16 +128,20 @@ function deletingEffect() {
 }
 setTimeout(typingEffect, 500);
 
-// Gestione schede del terminale
+/* ========================================================
+   GESTIONE SCHEDE DEL TERMINALE
+======================================================== */
 function switchTab(evt, tabId) {
     const contents = document.getElementsByClassName('tab-content');
     for (let i = 0; i < contents.length; i++) {
         contents[i].classList.remove('active');
     }
+    
     const tabs = document.getElementsByClassName('tab');
     for (let i = 0; i < tabs.length; i++) {
         tabs[i].classList.remove('active');
     }
+    
     document.getElementById(tabId).classList.add('active');
     evt.currentTarget.classList.add('active');
 }

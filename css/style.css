@@ -240,7 +240,7 @@ h2 {
    5. SEZIONI SPECIFICHE (Hero, Terminale)
 ========================================= */
 .hero-section {
-    padding: 40px 0 40px 0;
+    padding: 30px 0 30px 0;
     border-bottom: 1px dashed var(--border-color);
 }
 
@@ -315,6 +315,8 @@ h2 {
     padding: 10px 20px;
     font-size: 0.85rem;
     color: var(--text-muted);
+    border: none;
+    outline: none;
     border-right: 1px solid var(--border-color);
     background: transparent;
     cursor: pointer;
@@ -398,7 +400,6 @@ h2 {
 ========================================= */
 .edu-section {
     padding: 40px 0;
-    margin-bottom: 20px;
 }
 
 .edu-timeline {

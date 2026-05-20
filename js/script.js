@@ -145,3 +145,21 @@ function switchTab(evt, tabId) {
     document.getElementById(tabId).classList.add('active');
     evt.currentTarget.classList.add('active');
 }
+
+/* ========================================================
+   FILTRAGGIO DELLE SCHEDE SU PUBBLICAZIONI
+======================================================== */
+function filterCategory(category, element) {
+    const tabs = document.querySelectorAll('.terminal-tabs .tab');
+    tabs.forEach(tab => tab.classList.remove('active'));
+    element.classList.add('active');
+
+    const posts = document.querySelectorAll('.post-item');
+    posts.forEach(post => {
+        if (category === 'all' || post.classList.contains(category)) {
+            post.style.display = 'block';
+        } else {
+            post.style.display = 'none';
+        }
+    });
+}

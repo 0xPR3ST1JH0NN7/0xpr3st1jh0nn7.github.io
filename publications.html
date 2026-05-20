@@ -19,7 +19,7 @@ permalink: /publications/
         <div class="grid-six" id="posts-grid">
             
             {% for post in site.posts %}
-            <div class="cyber-card square-card-six post-item {{ post.category }}">
+            <a href="{{ site.baseurl }}{{ post.url }}" class="cyber-card square-card-six post-item {{ post.category }}">
                 
                 <span class="card-tag">
                     {% if post.category == 'writeup' %}
@@ -38,11 +38,9 @@ permalink: /publications/
                         {{ post.excerpt | strip_html | truncatewords: 20 }}
                     {% endif %}
                 </p>
-                
-                <div class="card-links">
-                    <a href="{{ site.baseurl }}{{ post.url }}" class="card-link" data-it="Accedi al terminale" data-en="Access terminal">Accedi al terminale</a>
-                </div>
+               
             </div>
+            post-item {{ post.category }}
             {% endfor %}
 
         </div>

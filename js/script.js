@@ -26,8 +26,8 @@ function setLang(lang) {
     });
     
     // Aggiorna interfaccia bottoni lingua
-    document.getElementById('lang-it').classList.toggle('active', lang === 'it');
     document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+    document.getElementById('lang-it').classList.toggle('active', lang === 'it');
     
     // Aggiorna la variabile per l'effetto macchina da scrivere
     currentPhrases = lang === 'it' ? phrasesIT : phrasesEN;

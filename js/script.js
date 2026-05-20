@@ -8,7 +8,7 @@ let currentPhrases = phrasesEN;
 function setLang(lang) {
     localStorage.setItem('portfolio_lang', lang);
     
-    document.querySelectorAll('[data-it]').forEach(el => {
+    document.querySelectorAll('[data-en]').forEach(el => {
         const translatedText = el.getAttribute('data-' + lang);
         
         // Aggiorna il testo visibile

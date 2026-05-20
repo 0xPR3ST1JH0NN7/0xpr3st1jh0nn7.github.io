@@ -3,7 +3,7 @@
 ======================================================== */
 const phrasesIT = ['PENETRATION TESTER', 'RED TEAM OPERATOR'];
 const phrasesEN = ['PENETRATION TESTER', 'RED TEAM OPERATOR'];
-let currentPhrases = phrasesIT;
+let currentPhrases = phrasesEN;
 
 function setLang(lang) {
     localStorage.setItem('portfolio_lang', lang);

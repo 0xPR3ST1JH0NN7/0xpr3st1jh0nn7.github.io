@@ -163,3 +163,33 @@ function filterCategory(category, element) {
         }
     });
 }
+
+/* ========================================================
+   FILTRAGGIO AVANZATO DELLE PUBBLICAZIONI
+======================================================== */
+let currentCat = 'all';
+let currentDiff = 'all';
+
+function updateFilters(type, value, element) {
+    const tabs = element.parentElement.querySelectorAll('.tab');
+    tabs.forEach(tab => tab.classList.remove('active'));
+    element.classList.add('active');
+
+    if (type === 'category') {
+        currentCat = value;
+    } else if (type === 'difficulty') {
+        currentDiff = value;
+    }
+
+    const posts = document.querySelectorAll('.post-item');
+    posts.forEach(post => {
+        const matchCat = currentCat === 'all' || post.classList.contains(currentCat);
+        const matchDiff = currentDiff === 'all' || post.classList.contains('diff-' + currentDiff);
+
+        if (matchCat && matchDiff) {
+            post.style.display = 'block';
+        } else {
+            post.style.display = 'none';
+        }
+    });
+}

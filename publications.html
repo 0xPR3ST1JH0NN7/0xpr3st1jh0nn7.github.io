@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "William Prestigiovanni | Portfolio"
-header_quote: "Are you a 0 or a 1?"
+header_quote: "Are a 0 or a 1?"
 permalink: /publications/
 ---
 
@@ -10,37 +10,39 @@ permalink: /publications/
         <h1 class="glitch-text" data-it="PUBBLICAZIONI" data-en="PUBLICATIONS" data-text="PUBBLICAZIONI">PUBBLICAZIONI</h1>
         <p style="margin-bottom: 40px; color: var(--text-muted);" data-it="Raccolta di write-up, ricerche e riflessioni sulla sicurezza offensiva." data-en="Collection of write-ups, research, and thoughts on offensive security.">Raccolta di write-up, ricerche e riflessioni sulla sicurezza offensiva.</p>
 
-        <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 40px;">
-            <div class="terminal-tabs" style="border: 1px solid var(--border-color); border-radius: 4px;">
-                <button class="tab active" onclick="updateFilters('category', 'all', this)">TUTTI</button>
-                <button class="tab" onclick="updateFilters('category', 'writeup', this)">WRITE-UPS</button>
-                <button class="tab" onclick="updateFilters('category', 'blog', this)">RICERCA</button>
-            </div>
-
-            <div class="terminal-tabs" style="border: 1px solid var(--border-color); border-radius: 4px;">
-                <button class="tab active" onclick="updateFilters('difficulty', 'all', this)">LIVELLO MISTO</button>
-                <button class="tab" onclick="updateFilters('difficulty', 'Easy', this)">EASY</button>
-                <button class="tab" onclick="updateFilters('difficulty', 'Medium', this)">MEDIUM</button>
-                <button class="tab" onclick="updateFilters('difficulty', 'Hard', this)">HARD</button>
-            </div>
+        <div class="terminal-tabs" style="margin-bottom: 40px; display: inline-flex; border: 1px solid var(--border-color); border-radius: 4px;">
+            <button class="tab active" onclick="filterCategory('all', this)">TUTTI</button>
+            <button class="tab" onclick="filterCategory('writeup', this)">WRITE-UPS</button>
+            <button class="tab" onclick="filterCategory('blog', this)">RICERCA</button>
         </div>
 
-        <div class="micro-grid" id="posts-grid">
+        <div class="grid-six" id="posts-grid">
             
             {% for post in site.posts %}
-            <a href="{{ site.baseurl }}{{ post.url }}" class="post-item {{ post.category }} diff-{{ post.difficulty | default: 'none' }}" style="text-decoration: none;">
-                <div class="cyber-card micro-card">
-                    <span class="card-tag" style="font-size: 0.7rem;">
-                        {% if post.category == 'writeup' %}
-                            HTB // {{ post.difficulty | upcase }}
-                        {% else %}
-                            BLOG // {{ post.date | date: "%d/%m/%Y" }}
-                        {% endif %}
-                    </span>
-                    
-                    <h3 class="card-title">{{ post.title }}</h3>
+            <div class="cyber-card square-card-six post-item {{ post.category }}">
+                
+                <span class="card-tag">
+                    {% if post.category == 'writeup' %}
+                        HTB // {{ post.difficulty | upcase }}
+                    {% else %}
+                        BLOG // {{ post.date | date: "%d/%m/%Y" }}
+                    {% endif %}
+                </span>
+                
+                <h3 class="card-title">{{ post.title }}</h3>
+                
+                <p class="card-desc">
+                    {% if post.description %}
+                        {{ post.description }}
+                    {% else %}
+                        {{ post.excerpt | strip_html | truncatewords: 20 }}
+                    {% endif %}
+                </p>
+                
+                <div class="card-links">
+                    <a href="{{ site.baseurl }}{{ post.url }}" class="card-link" data-it="Accedi al terminale" data-en="Access terminal">Accedi al terminale</a>
                 </div>
-            </a>
+            </div>
             {% endfor %}
 
         </div>

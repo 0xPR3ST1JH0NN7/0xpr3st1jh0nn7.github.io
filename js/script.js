@@ -191,3 +191,24 @@ function switchPubTab(btnElement, tabId) {
         btnElement.classList.add('active');
     }
 }
+
+function filterDifficulty(diff, btnElement) {
+    // Gestione stato visivo bottoni filtro
+    document.querySelectorAll('.diff-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    btnElement.classList.add('active');
+
+    // Mostra/Nascondi le card di HTB in base all'attributo data-difficulty
+    const items = document.querySelectorAll('.htb-item');
+    items.forEach(item => {
+        if (diff === 'all' || item.getAttribute('data-difficulty') === diff) {
+            // Usa stringa vuota per ripristinare il display: flex di default del CSS
+            item.style.display = ''; 
+            // Breve animazione per il rientro
+            item.style.animation = 'fadeIn 0.3s ease';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+}

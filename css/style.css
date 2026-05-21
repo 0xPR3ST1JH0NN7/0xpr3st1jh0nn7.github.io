@@ -791,3 +791,130 @@ footer {
     color: var(--text-muted);
     line-height: 1.6;
 }
+
+.grid-six {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Colonne flessibili ma compatte */
+    gap: 15px; /* Spazio tra i quadratini */
+    width: 100%;
+}
+
+.htb-item.htb-machine-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 10px; /* Padding interno ridotto */
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    aspect-ratio: 1/1; /* Mantiene la card quadrata */
+    overflow: hidden;
+}
+
+/* Area Media (Immagine) */
+.htb-card-media {
+    width: 100%;
+    height: 60%; /* L'immagine occupa il 60% dell'altezza */
+    overflow: hidden;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    background-color: rgba(0, 0, 0, 0.3); /* Sfondo per immagini trasparenti */
+}
+
+.htb-card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ritaglia per riempire perfettamente */
+    display: block;
+}
+
+/* Area Dettagli */
+.htb-card-details {
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 5px;
+}
+
+/* Nome Macchina */
+.htb-machine-card h3.card-title {
+    color: var(--text-color);
+    margin: 0;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: none;
+    letter-spacing: normal;
+    white-space: nowrap; /* Evita il testo a capo */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Aggiunge ... se il nome è troppo lungo */
+}
+
+/* Riga Meta (Difficoltà e OS) */
+.htb-meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5px;
+    width: 100%;
+}
+
+/* Tag Difficoltà (Ristilizzato) */
+.htb-machine-card .card-tag {
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 3px;
+    background-color: rgba(0, 0, 0, 0.4);
+    border: 1px solid currentColor;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+/* Icona OS */
+.htb-os-icon {
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+    padding: 2px 5px;
+    border-radius: 3px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 25px;
+    min-height: 25px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Usiamo glifi testuali minimali per replicare le icone senza dipendenze */
+/* Puoi sostituire questi glifi con icone reali (es. FontAwesome) se lo desideri */
+.htb-os-icon.os-linux::before {
+    content: "L"; /* Glifo pinguino Linux minimale */
+    margin-right: 2px;
+}
+
+.htb-os-icon.os-windows::before {
+    content: "W"; /* Glifo logo Windows minimale */
+    margin-right: 2px;
+}
+
+/* Hover Effect Aggiornato: Sollevamento e Bordo Colorato basato sulla difficoltà */
+.htb-item.htb-machine-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Applica il colore della difficoltà al bordo all'hover */
+.htb-item.htb-machine-card:hover[data-difficulty="easy"] { border-color: #a4de02; }
+.htb-item.htb-machine-card:hover[data-difficulty="medium"] { border-color: #ffc107; }
+.htb-item.htb-machine-card:hover[data-difficulty="hard"] { border-color: #ef5350; }
+.htb-item.htb-machine-card:hover[data-difficulty="insane"] { border-color: #ab47bc; }

@@ -25,15 +25,28 @@ permalink: /publications/
                 <button class="diff-btn diff-insane" data-diff="insane" onclick="filterDifficulty('insane', this)">INSANE</button>
             </div>
 
+            <div id="htb-tab" class="pub-tab-content active">
+            
+            <div class="htb-filters">
+                </div>
+
             <div class="grid-six" id="htb-grid">
                 {% for post in site.posts %}
                     {% if post.category == 'writeup' %}
-                    <a href="{{ site.baseurl }}{{ post.url }}" class="cyber-card square-card-six htb-item" data-difficulty="{{ post.difficulty | downcase }}">
-                        <span class="card-tag difficulty-{{ post.difficulty | downcase }}">HTB // {{ post.difficulty | upcase }}</span>
-                        <h3 class="card-title">{{ post.title }}</h3>
-                        <p class="card-desc" style="display: block; font-size: 0.85rem; color: var(--text-muted); margin-top: 10px;">
-                            {% if post.description %}{{ post.description | truncatewords: 15 }}{% else %}{{ post.excerpt | strip_html | truncatewords: 15 }}{% endif %}
-                        </p>
+                    <a href="{{ site.baseurl }}{{ post.url }}" class="cyber-card htb-item htb-machine-card" data-difficulty="{{ post.difficulty | downcase }}">
+                        
+                        <div class="htb-card-media">
+                            <img src="{{ site.baseurl }}{{ post.machine_image | default: '/assets/images/placeholder-machine.png' }}" alt="{{ post.title }} Machine">
+                        </div>
+                        
+                        <div class="htb-card-details">
+                            <h3 class="card-title">{{ post.title }}</h3>
+                            
+                            <div class="htb-meta-row">
+                                <span class="card-tag difficulty-{{ post.difficulty | downcase }}">HTB // {{ post.difficulty | upcase }}</span>
+                                <span class="htb-os-icon os-{{ post.os | downcase }}">{{ post.os | default: '?' }}</span>
+                            </div>
+                        </div>
                     </a>
                     {% endif %}
                 {% endfor %}

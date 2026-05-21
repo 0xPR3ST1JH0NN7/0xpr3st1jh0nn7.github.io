@@ -11,8 +11,8 @@ permalink: /publications/
         <p style="margin-bottom: 40px; color: var(--text-muted);" data-it="Raccolta di write-up, ricerche e riflessioni sulla sicurezza offensiva." data-en="Collection of write-ups, research, and thoughts on offensive security.">Raccolta di write-up, ricerche e riflessioni sulla sicurezza offensiva.</p>
 
         <div class="terminal-tabs" style="margin-bottom: 30px; display: inline-flex; border: 1px solid var(--border-color); border-radius: 4px;">
-            <button class="tab active" onclick="switchPubTab(event, 'htb-tab')">HTB WRITE-UPS</button>
-            <button class="tab" onclick="switchPubTab(event, 'articles-tab')">ARTICLES</button>
+            <button class="tab active" onclick="switchPubTab(this, 'htb-tab')">HTB WRITE-UPS</button>
+            <button class="tab" onclick="switchPubTab(this, 'articles-tab')">ARTICLES</button>
         </div>
 
         <div id="htb-tab" class="pub-tab-content active">
@@ -25,18 +25,13 @@ permalink: /publications/
                 <button class="diff-btn diff-insane" data-diff="insane" onclick="filterDifficulty('insane', this)">INSANE</button>
             </div>
 
-            <div id="htb-tab" class="pub-tab-content active">
-            
-            <div class="htb-filters">
-                </div>
-
             <div class="grid-six" id="htb-grid">
                 {% for post in site.posts %}
                     {% if post.category == 'writeup' %}
                     <a href="{{ site.baseurl }}{{ post.url }}" class="cyber-card htb-item htb-machine-card" data-difficulty="{{ post.difficulty | downcase }}">
                         
                         <div class="htb-card-media">
-                            <img src="{{ site.baseurl }}{{ post.machine_image }}" alt="{{ post.title }}">
+                            <img src="{{ site.baseurl }}{{ post.machine_image | default: '/assets/images/placeholder-machine.png' }}" alt="{{ post.title }}">
                         </div>
                         
                         <div class="htb-card-details">
@@ -47,17 +42,16 @@ permalink: /publications/
                                 <span class="htb-tag os-{{ post.os | downcase }}">{{ post.os | capitalize }}</span>
                             </div>
                         </div>
-                        
                     </a>
                     {% endif %}
                 {% endfor %}
             </div>
         </div>
 
-        <div id="articles-tab" class="pub-tab-content" style="display: none;">
+        <div id="articles-tab" class="pub-tab-content">
             <div class="articles-list">
                 {% for post in site.posts %}
-                    {% if post.category == 'blog' or post.category == 'article' %}
+                    {% if post.category != 'writeup' %}
                     <a href="{{ site.baseurl }}{{ post.url }}" class="article-card">
                         <div class="article-meta">
                             <span class="article-date">{{ post.date | date: "%d/%m/%Y" }}</span>

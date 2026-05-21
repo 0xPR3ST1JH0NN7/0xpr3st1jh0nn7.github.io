@@ -167,48 +167,27 @@ function filterCategory(category, element) {
 /* ========================================================
    GESTIONE SEZIONE PUBBLICAZIONI (Tab & Filtri HTB)
 ======================================================== */
-function switchPubTab(evt, tabId) {
-    // Nascondi tutti i contenuti delle tab
+function switchPubTab(btnElement, tabId) {
+    // Rimuove la classe attiva da tutti i blocchi di contenuto
     const contents = document.querySelectorAll('.pub-tab-content');
     contents.forEach(content => {
         content.classList.remove('active');
-        content.style.display = 'none';
     });
     
-    // Rimuovi classe active dai bottoni delle tab
+    // Rimuove la classe attiva da tutti i bottoni in alto
     const tabs = document.querySelectorAll('#publications .terminal-tabs .tab');
     tabs.forEach(tab => {
         tab.classList.remove('active');
     });
     
-    // Mostra il contenuto selezionato
+    // Aggiunge la classe attiva per mostrare solo il blocco corretto
     const selectedContent = document.getElementById(tabId);
     if (selectedContent) {
         selectedContent.classList.add('active');
-        selectedContent.style.display = 'block';
     }
     
-    // Aggiungi active al bottone cliccato
-    evt.currentTarget.classList.add('active');
-}
-
-function filterDifficulty(diff, btnElement) {
-    // Gestione stato visivo bottoni filtro
-    document.querySelectorAll('.diff-btn').forEach(btn => {
-        btn.classList.remove('active');
-    });
-    btnElement.classList.add('active');
-
-    // Mostra/Nascondi le card di HTB in base all'attributo data-difficulty
-    const items = document.querySelectorAll('.htb-item');
-    items.forEach(item => {
-        if (diff === 'all' || item.getAttribute('data-difficulty') === diff) {
-            // Usa stringa vuota per ripristinare il display: flex di default del CSS
-            item.style.display = ''; 
-            // Breve animazione per il rientro
-            item.style.animation = 'fadeIn 0.3s ease';
-        } else {
-            item.style.display = 'none';
-        }
-    });
+    // Accende il bottone su cui hai appena cliccato
+    if (btnElement) {
+        btnElement.classList.add('active');
+    }
 }

@@ -453,45 +453,10 @@ h2 {
 /* =========================================
    7. SEZIONE FORMAZIONE E TIMELINE
 ========================================= */
-.edu-section {
-    padding: 40px 0;
-}
-
-.edu-timeline {
-    margin-top: 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    max-width: 900px;
-}
-
-.edu-card {
-    background-color: #111;
-    border: 2px solid #222;
-    border-radius: 10px;
-    padding: 25px;
-    position: relative;
-    transition: border-color 0.3s ease;
-}
 
 .edu-card.active-studying {
     border-color: #333;
     box-shadow: inset 0 0 10px rgba(0, 255, 0, 0.02);
-}
-
-.edu-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #222;
-    padding-bottom: 10px;
-    margin-bottom: 15px;
-}
-
-.edu-date {
-    font-family: monospace;
-    color: #888;
-    font-size: 0.9em;
 }
 
 .edu-card h3 {
@@ -502,18 +467,54 @@ h2 {
     letter-spacing: normal;
 }
 
+/* === ACADEMIC TIMELINE - FULL WIDTH === */
+
+.edu-section {
+  width: 100%;
+  padding: 4rem 2rem;
+  box-sizing: border-box;
+}
+
+.edu-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  max-width: 100%;   /* rimuove eventuali limiti di larghezza */
+}
+
+.edu-card {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 2.5rem 3rem;   /* più padding interno per far respirare il contenuto */
+}
+
+.edu-header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.edu-header h3 {
+  font-size: 1.4rem;
+}
+
+.edu-date {
+  font-size: 1.1rem;
+  white-space: nowrap;
+}
+
 .edu-institution {
-    color: #0f0;
-    font-family: monospace;
-    margin: 0 0 10px 0;
-    font-size: 1em;
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
 }
 
 .edu-details {
-    color: #aaa;
-    line-height: 1.6;
-    margin: 0;
-    font-size: 0.95em;
+  font-size: 1rem;
+  margin-top: 1rem;
+  line-height: 1.7;
 }
 
 .edu-card:hover {

@@ -32,12 +32,17 @@
     </header>
 
     {% if page.category %}
-    <div style="max-width: 1200px; margin: 40px auto 0 auto; padding: 0 20px;">
-        <a href="{{ '/publications/' | relative_url }}" class="cyber-btn back-btn" style="text-decoration: none; display: inline-block;">
-            &lt; <span data-it="TORNA ALLE PUBBLICAZIONI" data-en="BACK TO PUBLICATIONS">TORNA ALLE PUBBLICAZIONI</span>
-        </a>
-    </div>
+<div style="max-width: 1200px; margin: 40px auto 0 auto; padding: 0 20px;">
+    {% if page.category == 'writeup' %}
+        {% assign back_target = '/publications/#htb' | relative_url %}
+    {% else %}
+        {% assign back_target = '/publications/#articles' | relative_url %}
     {% endif %}
+    <a href="{{ back_target }}" class="cyber-btn back-btn" style="text-decoration: none; display: inline-block;">
+        &lt; <span data-it="TORNA ALLA SELEZIONE" data-en="BACK TO SELECTION">BACK TO SELECTION</span>
+    </a>
+</div>
+{% endif %}
 
     {{ content }}
 

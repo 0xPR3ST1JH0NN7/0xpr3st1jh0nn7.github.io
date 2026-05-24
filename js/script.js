@@ -253,3 +253,54 @@ function shuffleHTBMachines() {
 window.addEventListener('DOMContentLoaded', () => {
     shuffleHTBMachines();
 });
+
+
+function openSection(sectionId) {
+    // Nasconde l'intero blocco del menu principale
+    const mainPublicationsMenu = document.getElementById('publications');
+    if (mainPublicationsMenu) {
+        mainPublicationsMenu.style.display = 'none';
+    }
+    
+    // Nasconde entrambe le sezioni per sicurezza
+    document.getElementById('htb-section').style.display = 'none';
+    document.getElementById('articles-section').style.display = 'none';
+    
+    // Mostra la sezione selezionata
+    const targetSection = document.getElementById(sectionId);
+    if (targetSection) {
+        targetSection.style.display = 'block';
+        targetSection.style.animation = 'fadeIn 0.4s ease';
+    }
+}
+
+function backToMenu() {
+    // Nasconde le visualizzazioni specifiche
+    document.getElementById('htb-section').style.display = 'none';
+    document.getElementById('articles-section').style.display = 'none';
+    
+    // Mostra nuovamente il menu principale con la sua animazione
+    const mainPublicationsMenu = document.getElementById('publications');
+    if (mainPublicationsMenu) {
+        mainPublicationsMenu.style.display = 'block';
+        mainPublicationsMenu.style.animation = 'fadeIn 0.4s ease';
+    }
+    
+    // Rimuove l'ancora dall'URL senza ricaricare la pagina
+    if (window.location.hash) {
+        history.pushState("", document.title, window.location.pathname + window.location.search);
+    }
+}
+
+// Inizializzazione esistente da aggiornare con il controllo hash
+window.addEventListener('DOMContentLoaded', () => {
+    const savedLang = localStorage.getItem('portfolio_lang') || 'en';
+    setLang(savedLang);
+    
+    // Controllo delle ancore per mostrare la sezione corretta quando si torna indietro da un post
+    if (window.location.hash === '#htb') {
+        openSection('htb-section');
+    } else if (window.location.hash === '#articles') {
+        openSection('articles-section');
+    }
+});

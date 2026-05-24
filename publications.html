@@ -7,81 +7,80 @@ permalink: /publications/
 
 <main>
     <section id="publications" class="hero-section" style="border-bottom: none;">
-        <h1 class="glitch-text" data-it="PUBBLICAZIONI" data-en="PUBLICATIONS">PUBLICATIONS</h1>
+        <h1 class="glitch-text" data-it="PUBBLICAZIONI" data-en="PUBLICATIONS" data-text="PUBLICATIONS">PUBLICATIONS</h1>
         <p style="margin-bottom: 40px; color: var(--text-muted);" data-it="Questa sezione contiene i resoconti tecnici delle attività di penetration testing condotte sulle macchine Hack The Box, accompagnati da articoli divulgativi, ricerche e progetti personali nel campo della sicurezza informatica." data-en="This section contains technical reports of penetration testing activities conducted on Hack The Box machines, along with educational articles, research work, and personal projects in the field of cybersecurity.">This section contains technical reports of penetration testing activities conducted on Hack The Box machines, along with educational articles, research work, and personal projects in the field of cybersecurity.</p>
 
         <div id="choice-menu" class="big-choices-container">
-    <div class="big-choice-card" onclick="openSection('htb-section')">
-        <img src="{{ site.baseurl }}/assets/img/htb-icon.png" alt="HTB" class="choice-icon" style="width: 80px; height: 80px; object-fit: contain;">
-        <h2 data-it="HACK THE BOX WRITE-UPS" data-en="HACK THE BOX WRITE-UPS">HACK THE BOX WRITE-UPS</h2>
-        <p data-it="Sistemi compromessi e tecniche di sfruttamento" data-en="Compromised machines and exploitation methodologies">Compromised Machines and Exploitation Methodologies</p>
-    </div>
-    <div class="big-choice-card" onclick="openSection('articles-section')">
-        <div class="choice-icon">📝</div>
-        <h2 data-it="ARTICOLI" data-en="ARTICLES">ARTICOLI</h2>
-        <p data-it="Ricerche, guide e analisi" data-en="Research, guides and analysis">Ricerche, guide e analisi</p>
-    </div>
-</div>
-
-        <div id="htb-section" class="pub-section" style="display: none;">
-            <button class="cyber-btn back-btn" onclick="backToMenu()">
-                &lt; <span data-it="TORNA AL MENU" data-en="BACK TO MENU">TORNA AL MENU</span>
-            </button>
-            
-            <div class="htb-filters" style="margin-top: 20px;">
-                <button class="diff-btn active" data-diff="all" onclick="filterDifficulty('all', this)">ALL</button>
-                <button class="diff-btn diff-easy" data-diff="easy" onclick="filterDifficulty('easy', this)">EASY</button>
-                <button class="diff-btn diff-medium" data-diff="medium" onclick="filterDifficulty('medium', this)">MEDIUM</button>
-                <button class="diff-btn diff-hard" data-diff="hard" onclick="filterDifficulty('hard', this)">HARD</button>
-                <button class="diff-btn diff-insane" data-diff="insane" onclick="filterDifficulty('insane', this)">INSANE</button>
+            <div class="big-choice-card" onclick="openSection('htb-section')">
+                <img src="{{ site.baseurl }}/assets/img/htb-icon.png" alt="HTB" class="choice-icon" style="width: 80px; height: 80px; object-fit: contain;">
+                <h2 data-it="HACK THE BOX WRITE-UPS" data-en="HACK THE BOX WRITE-UPS">HACK THE BOX WRITE-UPS</h2>
+                <p data-it="Sistemi compromessi e tecniche di sfruttamento" data-en="Compromised machines and exploitation methodologies">Compromised machines and exploitation methodologies</p>
             </div>
-
-            <div class="grid-six" id="htb-grid">
-                {% for post in site.posts %}
-                    {% if post.category == 'writeup' %}
-                    <a href="{{ site.baseurl }}{{ post.url }}" class="cyber-card htb-item htb-machine-card" data-difficulty="{{ post.difficulty | downcase }}">
-                        
-                        <div class="htb-card-media">
-                            <img src="{{ site.baseurl }}{{ post.machine_image }}" alt="{{ post.title }}">
-                        </div>
-                        
-                        <div class="htb-card-details">
-                            <h3 class="card-title">{{ post.title }}</h3>
-                            
-                            <div class="htb-meta-row">
-                                <span class="htb-tag difficulty-{{ post.difficulty | downcase }}">{{ post.difficulty | capitalize }}</span>
-                                <span class="htb-tag os-{{ post.os | downcase }}">{{ post.os | capitalize }}</span>
-                            </div>
-                        </div>
-                    </a>
-                    {% endif %}
-                {% endfor %}
+            <div class="big-choice-card" onclick="openSection('articles-section')">
+                <div class="choice-icon">📝</div>
+                <h2 data-it="ARTICOLI" data-en="ARTICLES">ARTICLES</h2>
+                <p data-it="Ricerche, guide e analisi" data-en="Research, guides and analysis">Research, guides and analysis</p>
             </div>
         </div>
-
-        <div id="articles-section" class="pub-section" style="display: none;">
-            <button class="cyber-btn back-btn" onclick="backToMenu()">
-                &lt; <span data-it="TORNA AL MENU" data-en="BACK TO MENU">TORNA AL MENU</span>
-            </button>
-            
-            <div class="articles-list" style="margin-top: 20px;">
-                {% for post in site.posts %}
-                    {% if post.category != 'writeup' %}
-                    <a href="{{ site.baseurl }}{{ post.url }}" class="article-card">
-                        <div class="article-meta">
-                            <span class="article-date">{{ post.date | date: "%d/%m/%Y" }}</span>
-                            <span class="article-separator">//</span>
-                            <span class="article-tag">RICERCA</span>
-                        </div>
-                        <h3 class="article-title">{{ post.title }}</h3>
-                        <p class="article-desc">
-                            {% if post.description %}{{ post.description }}{% else %}{{ post.excerpt | strip_html | truncatewords: 30 }}{% endif %}
-                        </p>
-                    </a>
-                    {% endif %}
-                {% endfor %}
-            </div>
-        </div>
-
     </section>
+
+    <div id="htb-section" class="pub-section" style="display: none; margin-top: 40px;">
+        <button class="cyber-btn back-btn" onclick="backToMenu()">
+            &lt; <span data-it="TORNA AL MENU" data-en="BACK TO MENU">BACK TO MENU</span>
+        </button>
+        
+        <div class="htb-filters" style="margin-top: 30px;">
+            <button class="diff-btn active" data-diff="all" onclick="filterDifficulty('all', this)">ALL</button>
+            <button class="diff-btn diff-easy" data-diff="easy" onclick="filterDifficulty('easy', this)">EASY</button>
+            <button class="diff-btn diff-medium" data-diff="medium" onclick="filterDifficulty('medium', this)">MEDIUM</button>
+            <button class="diff-btn diff-hard" data-diff="hard" onclick="filterDifficulty('hard', this)">HARD</button>
+            <button class="diff-btn diff-insane" data-diff="insane" onclick="filterDifficulty('insane', this)">INSANE</button>
+        </div>
+
+        <div class="grid-six" id="htb-grid">
+            {% for post in site.posts %}
+                {% if post.category == 'writeup' %}
+                <a href="{{ site.baseurl }}{{ post.url }}" class="cyber-card htb-item htb-machine-card" data-difficulty="{{ post.difficulty | downcase }}">
+                    
+                    <div class="htb-card-media">
+                        <img src="{{ site.baseurl }}{{ post.machine_image }}" alt="{{ post.title }}">
+                    </div>
+                    
+                    <div class="htb-card-details">
+                        <h3 class="card-title">{{ post.title }}</h3>
+                        
+                        <div class="htb-meta-row">
+                            <span class="htb-tag difficulty-{{ post.difficulty | downcase }}">{{ post.difficulty | capitalize }}</span>
+                            <span class="htb-tag os-{{ post.os | downcase }}">{{ post.os | capitalize }}</span>
+                        </div>
+                    </div>
+                </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <div id="articles-section" class="pub-section" style="display: none; margin-top: 40px;">
+        <button class="cyber-btn back-btn" onclick="backToMenu()">
+            &lt; <span data-it="TORNA AL MENU" data-en="BACK TO MENU">BACK TO MENU</span>
+        </button>
+        
+        <div class="articles-list" style="margin-top: 30px;">
+            {% for post in site.posts %}
+                {% if post.category != 'writeup' %}
+                <a href="{{ site.baseurl }}{{ post.url }}" class="article-card">
+                    <div class="article-meta">
+                        <span class="article-date">{{ post.date | date: "%d/%m/%Y" }}</span>
+                        <span class="article-separator">//</span>
+                        <span class="article-tag" data-it="RICERCA" data-en="RESEARCH">RESEARCH</span>
+                    </div>
+                    <h3 class="article-title">{{ post.title }}</h3>
+                    <p class="article-desc">
+                        {% if post.description %}{{ post.description }}{% else %}{{ post.excerpt | strip_html | truncatewords: 30 }}{% endif %}
+                    </p>
+                </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
 </main>

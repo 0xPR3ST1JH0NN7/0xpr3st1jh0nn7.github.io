@@ -461,7 +461,6 @@ h2 {
     width: 100%;
     padding: 40px 0;
     box-sizing: border-box;
-    border-bottom: 1px dashed var(--border-color);
 }
 
 .edu-timeline {
